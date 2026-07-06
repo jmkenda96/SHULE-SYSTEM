@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', [AuthController::class, 'login']);
 Route::post('login', [AuthController::class, 'authlogin']);
@@ -13,33 +14,27 @@ Route::get('admin/dashboard', function () {
 
 
 
-Route::get('admin/admin', function () {
+Route::get('admin/list', function () {
     return view('admin.index');
 });
 
 Route::group(['middleware' => 'isadmin'], function(){
-    Route::get('admin/dashboard' , function(){
-        return view('admin.dashboard');
-    });
+   Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
 });
 
 Route::group(['middleware' => 'isteacher'], function(){
-     Route::get('teacher/dashboard' ,  function(){
-        return view('admin.dashboard');   
-     });
+  Route::get('teacher/dashboard', [DashboardController::class, 'dashboard']);
+
 });
 
 Route::group(['middleware' => 'isstudent'], function(){
-    Route::get('student/dashboard' ,  function(){
-        return view('student.dashboard');
-    });
+  Route::get('student/dashboard', [DashboardController::class, 'dashboard']);
 
 });
 
 Route::group(['middleware' => 'isparent'], function(){
-    Route::get('parent/dashboard' ,  function(){
-        return view('parent.dashboard');   
-     });
+  Route::get('parent/dashboard', [DashboardController::class, 'dashboard']);
+
 });
 
 

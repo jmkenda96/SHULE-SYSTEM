@@ -162,19 +162,7 @@
             </li>
             <!--end::Notifications Dropdown Menu-->
 
-            <!--begin::Fullscreen Toggle-->
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="#"
-                data-lte-toggle="fullscreen"
-                aria-label="Toggle fullscreen"
-              >
-                <i data-lte-icon="maximize" class="bi bi-arrows-fullscreen"></i>
-                <i data-lte-icon="minimize" class="bi bi-fullscreen-exit d-none"></i>
-              </a>
-            </li>
-            <!--end::Fullscreen Toggle-->
+           
 
             <!--begin::Color Mode Toggle (#6010)-->
             <li class="nav-item dropdown">
@@ -241,9 +229,9 @@
                 <img
                   src="{{ asset('assets/img/user2-160x160.jpg') }}"
                   class="user-image rounded-circle shadow"
-                  alt="Alexander Pierce"
+                  alt="{{Auth::user()->name}}"
                 />
-                <span class="d-none d-md-inline">Alexander Pierce</span>
+                <span class="d-none d-md-inline">{{Auth::user()->name}}</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                 <!--begin::User Image-->
@@ -254,8 +242,7 @@
                     alt="Alexander Pierce"
                   />
                   <p>
-                    Alexander Pierce - Web Developer
-                    <small>Member since Nov. 2023</small>
+                   {{Auth::user()->name}}
                   </p>
                 </li>
                 <!--end::User Image-->
@@ -264,13 +251,13 @@
                   <!--begin::Row-->
                   <div class="row">
                     <div class="col-4 text-center">
-                      <a href="#">Followers</a>
+                      <!-- <a href="#">Followers</a> -->
                     </div>
                     <div class="col-4 text-center">
-                      <a href="#">Sales</a>
+                     <!-- <a href="#">Sales</a> -->
                     </div>
                     <div class="col-4 text-center">
-                      <a href="#">Friends</a>
+                      <!--<a href="#">Friends</a> -->
                     </div>
                   </div>
                   <!--end::Row-->
@@ -279,7 +266,7 @@
                 <!--begin::Menu Footer-->
                 <li class="user-footer">
                   <a href="#" class="btn btn-outline-secondary">Profile</a>
-                  <a href="#" class="btn btn-outline-danger float-end">Sign out</a>
+                  <a href="{{ url('logout')}}" class="btn btn-outline-danger float-end">Sign out</a>
                 </li>
                 <!--end::Menu Footer-->
               </ul>

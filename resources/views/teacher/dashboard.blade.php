@@ -1,6 +1,6 @@
 @extends('admin.layout.app') 
  
-@section('title','Admin dashboard')
+@section('title','Teacher dashboard')
 @section('content')
  
  
@@ -15,7 +15,7 @@
               <div class="col-sm-6">
                 <h1 class="mb-0 fs-3">Dashboard</h1>
               </div>
-        
+            
             </div>
             <!--end::Row-->
           </div>

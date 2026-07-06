@@ -23,14 +23,13 @@ class ParentMiddleware
             return $next($request);
            }
            else{
-            Auth::logout;
+            Auth::logout();
             return redirect(url('/'));
            }
         }
          else{
-            Auth:logout();
-            return redirect()->route('/');
+            Auth::logout();
+            return redirect(url('/'));
          }
-        return $next($request);
     }
 }
