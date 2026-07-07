@@ -64,12 +64,7 @@
                       <p>Add New Admin</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="./widgets/cards.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Cards</p>
-                    </a>
-                  </li>
+                 
                 </ul>
               </li>
              

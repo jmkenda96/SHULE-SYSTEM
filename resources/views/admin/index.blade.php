@@ -3,14 +3,20 @@
 @section('title', 'Admin List')
 
 @section('content')
+
+
+                  
+
+                  
                 <div class="card mb-4">
                   <div class="card-header">
-                    <h3 class="card-title">Admin List</h3>
+                    <h3 class="card-title">Admin List  (Total: {{ $getRecord->total()}})</h3>
                     <div class="card-tools">
                       <a href="{{url('admin/add')}}" class="btn btn-primary btn-sm">Add New Admin</a>
                     </div>
                   </div>
                   @include('message')
+                  
                   <!-- /.card-header -->
                   <div class="card-body p-0">
                     <table class="table table-striped">
@@ -36,10 +42,15 @@
                          </td>
 
                        </tr>
-                      @endforeach
+                      @endforeach 
                       </tbody>
                     </table>
+
                   </div>
+                   <div class="card-footer clearfix float-end">
+                    {{ $getRecord->links() }}
+                      </div>
+    
                   <!-- /.card-body -->
                 </div>
 

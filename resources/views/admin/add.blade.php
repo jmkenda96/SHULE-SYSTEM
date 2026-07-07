@@ -15,51 +15,66 @@
             </div>
           </div>
         </div>
+
+    
         <!--end::App Content Header-->
         <!--begin::App Content-->
         <div class="app-content">
           <div class="container-fluid">
-            <div class="row">
-              <!-- Quick Example -->
-              <div class="col-md-6">
-                <div class="card card-primary card-outline mb-4">
+            <div class="row justify-content-center mt-3">
+              <div class="col-md-8 col-lg-6">
+                <div class="card card-primary card-outline shadow-sm mb-4">
                   <div class="card-header">
-                    <div class="card-title">Create Admin</div>
+                    <h5 class="card-title m-0">Create Admin</h5>
                   </div>
                   <form action="{{url('admin/store')}}" method="post">
                     {{csrf_field()}}
                     <div class="card-body">
                       <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Name</label>
+                        <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
                         <input
                           type="text"
                           class="form-control"
                           name="name"
-                          aria-describedby="emailHelp"
+                          id="name"
+                          placeholder="Enter full name"
+                          required
                         />
+                        @error('name')
+                        <span class="error text-danger">{{ $message }}</span>
+                        @enderror
                       </div>
 
                       <div class="mb-3">
-                       <label for="email" class="form-label">Email</label>
+                       <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
                         <input
-                          type="text"
+                          type="email"
                           class="form-control"
                           name="email"
-                          aria-describedby="emailHelp"
+                          id="email"
+                          placeholder="Enter email address"
+                          required
                         />
+                        @error('email')
+                        <span class="error text-danger">{{ $message }}</span>
+                        @enderror
                       </div>
+                      
                       <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password" id="password" />
+                        <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required />
+                        @error('password')
+                        <span class="error text-danger">{{ $message }}</span>
+                        @enderror
                       </div>
-                      <div class="input-group mb-3">
+                      
+                      <!-- <div class="mb-3">
+                        <label for="inputGroupFile02" class="form-label">Profile Picture (Optional)</label>
                         <input type="file" class="form-control" id="inputGroupFile02" />
-                        <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                      </div>
-
+                      </div> -->
                     </div>
-                    <div class="card-footer">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="card-footer text-end">
+                      <button type="submit" class="btn btn-primary px-4"><i class="bi bi-save me-1"></i> Submit</button>
                     </div>
                   </form>
                 </div>

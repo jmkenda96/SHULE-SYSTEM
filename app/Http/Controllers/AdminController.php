@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\AddAdminRequest;
+use App\Http\Requests\UpdateAdminRequest;
 
 class AdminController extends Controller
 {
@@ -22,13 +24,13 @@ class AdminController extends Controller
      */
     public function add()
     {
-        return view('admin.add',$data);
+        return view('admin.add');
     }
 
     /**
      * Store a newly created resource in storage.
      */ 
-    public function store(Request $request)
+    public function store(AddAdminRequest $request)
     {
 
         $admin = new User();
@@ -54,18 +56,27 @@ class AdminController extends Controller
     public function edit(string $id)
     {
         $data['getRecord'] = User::getSingle($id);
-        return view('admin.edit', $data);
+
+        if(!empty($data['getRecord'])){
+            return view('admin.edit', $data);
+        }else{
+            return redirect('admin/list')->with('error', 'Admin not found');
+        }
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateAdminRequest $request, string $id)
     {
         $admin = User::getSingle($id);
         $admin->name = $request->name;
         $admin->email = $request->email;
+
+        if(!empty($request->password)){
         $admin->password = Hash::make($request->password);
+        }
         $admin->user_type = 1;
         $admin->save();
         return redirect('admin/list')->with('success', 'Admin updated successfully');
@@ -77,7 +88,8 @@ class AdminController extends Controller
     public function delete(string $id)
     {
         $admin = User::getSingle($id);
-        $admin->delete();
+        $admin->is_deleted = 1;
+        $admin->save();
         return redirect('admin/list')->with('success', 'Admin deleted successfully');
     }
 }
