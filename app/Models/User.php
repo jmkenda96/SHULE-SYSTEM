@@ -29,4 +29,28 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    static public function getEmailSingle($email)
+    {
+        return self::where('email','=', $email)->first();
+    }
+
+
+    static public function getTokenSingle($remember_token)
+    {
+        return self::where('remember_token','=', $remember_token)->first();
+    }
+   
+    static public function getAdmin()
+    {
+        return self::select('users.*')->where('user_type', '=' , 1)
+                      ->orderBy('users.id','desc')
+                      ->get();
+    }
+
+    
+    static public function getSingle($id)
+    {
+        return self::where('id','=', $id)->first();
+    }
 }

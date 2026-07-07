@@ -33,7 +33,7 @@
               id="navigation"
             >
               <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
+                <a href="{{url('admin/dashboard')}}" class="nav-link active">
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>
                     Dashboard
@@ -59,7 +59,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="./widgets/info-box.html" class="nav-link">
+                    <a href="{{url('admin/add')}}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Add New Admin</p>
                     </a>
@@ -102,7 +102,7 @@
               id="navigation"
             >
               <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
+                <a href="{{url('teacher/dashboard')}}" class="nav-link active">
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>
                     Dashboard
@@ -173,7 +173,7 @@
               id="navigation"
             >
               <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
+                <a href="{{url('student/dashboard')}}" class="nav-link active">
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>
                     Dashboard
@@ -242,7 +242,7 @@
               id="navigation"
             >
               <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
+                <a href="{{url('parents/dashboard')}}" class="nav-link active">
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>
                     Dashboard
