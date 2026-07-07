@@ -43,11 +43,24 @@ class User extends Authenticatable
    
     static public function getAdmin()
     {
-        return self::select('users.*')
+        $return = self::select('users.*')
                       ->where('user_type', '=' , 1)
-                      ->where('is_deleted','=' , 0)
-                      ->orderBy('users.id','desc')
-                      ->paginate(1);
+                      ->where('is_deleted','=' , 0);
+
+        if(!empty(request()->get('name')))
+        {
+            $return = $return->where('name', 'like', '%' . request()->get('name') . '%');
+        }
+
+        if(!empty(request()->get('email')))
+        {
+            $return = $return->where('email', 'like', '%' . request()->get('email') . '%');
+        }
+
+        $return = $return->orderBy('users.id','desc')
+                         ->paginate(1);
+
+        return $return;
     }
 
     
